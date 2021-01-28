@@ -23,8 +23,8 @@
 input the following commend in terminal:
 * ./mvnw spring-boot:run
 
-* Go to homepage -> localhost:8080/
-* Database -> spring.datasource.url=jdbc:mysql://localhost:3306/test
+- Go to homepage -> localhost:8080/
+- Database -> spring.datasource.url=jdbc:mysql://localhost:3306/test
 
 ## Daily progress
 Day 1
