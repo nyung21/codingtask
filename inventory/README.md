@@ -8,7 +8,8 @@
 
 ## Starting with Spring Initializr
 * Java - java version "1.8.0_271"
-* Maven - Apache Maven 3.6.3 
+* Maven - Apache Maven 3.6.3
+* Dependencies: mysql, web-starter, hibernate(JPA), devTools
 
 ## VS code extension for Java and Spring Boot
 * Spring Boot Extension Pack
@@ -38,9 +39,9 @@ spring.datasource.url=jdbc:mysql://localhost:3306/test
 ## Daily progress
 Day 1
 - study java framework and database
-- set up and run spring boot
+- create and run spring boot project w/ spring initializr
 - set up MySQL
-- connect spring boot to MySQL in application.properites
+- connect spring boot to MySQL by adding MySQL configuration in application.properites
 - create table in MySQL
 - create item attributes in MySQL
 
@@ -53,6 +54,9 @@ Day 2
 
 Day 3
 - csv create
+- transfer inventory
+- ui
+- 
 
 
 ### Reference Documentation
