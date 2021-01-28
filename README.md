@@ -21,13 +21,13 @@
 
 ## Run the application
 input the following commend in terminal:
-   ./mvnw spring-boot:run
-
-Go to homepage -> localhost:8080/
-Database -> spring.datasource.url=jdbc:mysql://localhost:3306/test
+* ./mvnw spring-boot:run
+* 
+* Go to homepage -> localhost:8080/
+* Database -> spring.datasource.url=jdbc:mysql://localhost:3306/test
 
 ## Daily progress
-* Day 1
+Day 1
 - study java framework and database
 - set up and run spring boot
 - set up MySQL
@@ -35,14 +35,14 @@ Database -> spring.datasource.url=jdbc:mysql://localhost:3306/test
 - create table in MySQL
 - create item attributes in MySQL
 
-* Day 2
+Day 2
 - build controller, model, repository, service
 - develop homepage, item list
 - create item
 - update item
 - delete item
 
-* Day 3
+Day 3
 - csv create
 
 
