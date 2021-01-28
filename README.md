@@ -1,4 +1,4 @@
-# HKTV coding task - a java web inventory system
+# HKTV coding task - java web inventory system
 
 ## System requirement
 * Java 
@@ -6,7 +6,7 @@
 * MySQL Server
 * Visual Studio Code
 
-## Installation
+## Starting with Spring Initializr
 * Java - java version "1.8.0_271"
 * Maven - Apache Maven 3.6.3 
 
@@ -20,14 +20,20 @@
 * Spring Boot Dashboard for VS code
 
 ## Run the application
-input the following commend in terminal:
+run the following command in a terminal window directory
 ```bash
 ./mvnw spring-boot:run
 ```
 
-Go to homepage -> localhost:8080/
+Go to homepage on browser
+```bash
+localhost:8080/
+```
 
-Database -> spring.datasource.url=jdbc:mysql://localhost:3306/test
+Database
+```bash
+spring.datasource.url=jdbc:mysql://localhost:3306/test
+```
 
 ## Daily progress
 Day 1
