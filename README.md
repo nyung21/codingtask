@@ -6,7 +6,7 @@
 * MySQL Server
 * Visual Studio Code
 
-## Install
+## Installation
 * Java - java version "1.8.0_271"
 * Maven - Apache Maven 3.6.3 
 
@@ -21,10 +21,13 @@
 
 ## Run the application
 input the following commend in terminal:
-* ./mvnw spring-boot:run
+```bash
+./mvnw spring-boot:run
+```
 
-- Go to homepage -> localhost:8080/
-- Database -> spring.datasource.url=jdbc:mysql://localhost:3306/test
+Go to homepage -> localhost:8080/
+
+Database -> spring.datasource.url=jdbc:mysql://localhost:3306/test
 
 ## Daily progress
 Day 1
