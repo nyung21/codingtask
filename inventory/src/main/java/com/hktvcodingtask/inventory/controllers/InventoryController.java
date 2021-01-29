@@ -45,8 +45,8 @@ public class InventoryController {
 
     @GetMapping("/")
     public String showIndex(Model model) {
-        List<Inventory> inventoryList = inventoryRepo.findAll();
-        model.addAttribute("itemList", inventoryList);
+        // List<Inventory> inventoryList = inventoryRepo.findAll();
+        // model.addAttribute("itemList", inventoryList);
         return "index";
     }
 
