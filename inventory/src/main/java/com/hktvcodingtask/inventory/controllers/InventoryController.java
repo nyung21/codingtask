@@ -70,9 +70,9 @@ public class InventoryController {
         return "redirect:/item";
     }
 
-    public String itemCode(@PathVariable("code") String code) {
+    // public String itemCode(@PathVariable("code") String code) {
 
-    }
+    // }
 
     @GetMapping("/create")
     public String createForm(@ModelAttribute("itemObject") Inventory inventory) {
