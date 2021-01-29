@@ -28,6 +28,9 @@
         <h3>
             <a href="/item">Item List</a>
         </h3>
+        <h3>
+            <a href="/upload">Upload CSV</a>
+        </h3>
 
     </body>
 

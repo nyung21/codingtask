@@ -39,6 +39,15 @@ public class Inventory {
     @Min(0)
     private int TSW;
 
+    public Inventory(String name, String code, int weight, int TKO, int CWB, int TSW) {
+        this.name = name;
+        this.code = code;
+        this.weight = weight;
+        this.TKO = TKO;
+        this.CWB = CWB;
+        this.TSW = TSW;
+    }
+
     public int getTKO() {
         return this.TKO;
     }

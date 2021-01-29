@@ -1,10 +1,12 @@
 # HKTV coding task - java web inventory system
 
 ## System requirement
-* Java 
+* Java
 * Spring-boot
 * MySQL Server
+* XAMPP
 * Visual Studio Code
+* Postman
 
 ## Starting with Spring Initializr
 * Java - java version "1.8.0_271"
@@ -53,11 +55,14 @@ Day 2
 - delete item
 
 Day 3
-- csv create
-- transfer inventory
-- ui
-- 
-
+- csvHelper
+- csv service class
+- response message
+- upload controller
+- file upload exception
+- upload csv file
+- search an item in item list
+- transfer inventory in edit page
 
 ### Reference Documentation
 For further reference, please consider the following sections:
