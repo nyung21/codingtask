@@ -28,9 +28,14 @@
         <h3>
             <a href="/item">Item List</a>
         </h3>
-        <h3>
-            <a href="/upload">Upload CSV</a>
-        </h3>
+        <p>
+            <p>upload csv file below</p>
+            <!--<a href="/upload">Upload CSV</a>-->
+            <form action="<c:url value='/upload' />" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" />
+                <input type="submit" name="submit" value="Submit" />
+            </form>
+        </p>
 
     </body>
 

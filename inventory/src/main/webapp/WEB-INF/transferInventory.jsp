@@ -54,8 +54,30 @@
                     </form>
                     <br>
                     <h1>Transfer Inventory</h1>
-                    <input type="submit" value="Transfer" />
-
+                    <form action="/transferInventory" method="POST">
+                        <input type="hidden" name="id" value="${id}" />
+                        <div>
+                            <label>Qty:</label> 
+                            <input type="text" name="qty" placeholder="qty" />
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <label>From:</label>
+                            <select name="locationFrom" style="margin-right: 8px;">
+                                <option></option>
+                                <option value="TKO">TKO</option>
+                                <option value="CWB">CWB</option>
+                                <option value="TSW">TSW</option>
+                            </select>
+                            <label>to</label>
+                            <select name="locationTo" style="margin-left: 8px;">
+                                <option></option>
+                                <option value="TKO">TKO</option>
+                                <option value="CWB">CWB</option>
+                                <option value="TSW">TSW</option>
+                            </select>
+                        </div>
+                        <input type="submit" value="Transfer" style="margin-top: 10px;" />
+                    </form>
                     <br><br>
                     <a href="/">Home Page</a>
 

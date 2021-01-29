@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.hktvcodingtask.inventory.helpers.csvHelper;
@@ -15,6 +16,7 @@ import com.hktvcodingtask.inventory.services.InventoryService;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,18 +51,27 @@ public class InventoryController {
     }
 
     @GetMapping("/item")
-    public String showAllItems(@ModelAttribute("itemObject") Inventory inventory, Model model) {
+    public String showAllItems(HttpServletRequest request, Inventory inventory, Model model) {
+        String code = request.getParameter("code");
         model.addAttribute("listOfItems", inventorySer.showAllItems());
+        model.addAttribute("code", code);
+        model.addAttribute("item", inventorySer.getByCode(code));
+
+        System.out.println(code);
         return "viewItems";
     }
 
     @PostMapping("/item")
-    public String searchItem(@Valid @ModelAttribute("itemObject") Inventory newItem, BindingResult result) {
+    public String searchItem(@Valid @PathVariable("code") String code, Inventory searchItem, BindingResult result) {
         if (result.hasErrors()) {
             return "";
         }
-        inventorySer.createAItem(newItem);
+        inventorySer.searchItem(searchItem);
         return "redirect:/item";
+    }
+
+    public String itemCode(@PathVariable("code") String code) {
+
     }
 
     @GetMapping("/create")
@@ -94,6 +105,77 @@ public class InventoryController {
         return "redirect:/item";
     }
 
+    @PostMapping("/transferInventory")
+    public String transferInventory(HttpServletRequest request) {
+        String id = request.getParameter("id");
+        String qty = request.getParameter("qty");
+        String locationFrom = request.getParameter("locationFrom");
+        String locationTo = request.getParameter("locationTo");
+
+        Inventory inv = inventorySer.getByIdAnItem(Long.valueOf(id));
+        if (inv != null) {
+            int finalQty = 0;
+            if (StringUtils.equals(locationFrom, "TKO")) {
+                finalQty = inv.getTKO() - Integer.parseInt(qty);
+                if (finalQty > 0) {
+                    this.transferInv(inv, locationTo, Integer.parseInt(qty));
+                    inv.setTKO(finalQty);
+                } else {
+                    this.transferInv(inv, locationTo, inv.getTKO());
+                    inv.setTKO(0);
+                }
+            } else if (StringUtils.equals(locationFrom, "CWB")) {
+                finalQty = inv.getCWB() - Integer.parseInt(qty);
+                if (finalQty > 0) {
+                    this.transferInv(inv, locationTo, Integer.parseInt(qty));
+                    inv.setCWB(finalQty);
+                } else {
+                    this.transferInv(inv, locationTo, inv.getCWB());
+                    inv.setCWB(0);
+                }
+            } else if (StringUtils.equals(locationFrom, "TSW")) {
+                finalQty = inv.getTSW() - Integer.parseInt(qty);
+                if (finalQty > 0) {
+                    this.transferInv(inv, locationTo, Integer.parseInt(qty));
+                    inv.setTSW(finalQty);
+                } else {
+                    this.transferInv(inv, locationTo, inv.getTSW());
+                    inv.setTSW(0);
+                }
+            }
+
+            inventorySer.saveInvetory(inv);
+        }
+
+        return "redirect:/transferInventory/" + id;
+    }
+
+    private void transferInv(Inventory inv, String locationTo, int qty) {
+        int finalQty = 0;
+        if (StringUtils.equals(locationTo, "TKO")) {
+            finalQty = inv.getTKO() + qty;
+            if (finalQty > 0) {
+                inv.setTKO(finalQty);
+            } else {
+                inv.setTKO(0);
+            }
+        } else if (StringUtils.equals(locationTo, "CWB")) {
+            finalQty = inv.getCWB() + qty;
+            if (finalQty > 0) {
+                inv.setCWB(finalQty);
+            } else {
+                inv.setCWB(0);
+            }
+        } else if (StringUtils.equals(locationTo, "TSW")) {
+            finalQty = inv.getTSW() + qty;
+            if (finalQty > 0) {
+                inv.setTSW(finalQty);
+            } else {
+                inv.setTSW(0);
+            }
+        }
+    }
+
     @PostMapping("/remove/{id}")
     public String remove(@PathVariable("id") Long id) {
         inventorySer.deleteById(id);
@@ -107,6 +189,7 @@ public class InventoryController {
 
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file, Model model) {
+        System.out.println(">>> aaaa");
         // if (file.isEmpty()) {
         // model.addAttribute("message", "Please select a CSV file to upload.");
         // model.addAttribute("status", false);

@@ -11,6 +11,7 @@ import com.hktvcodingtask.inventory.repositories.InventoryRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -39,12 +40,24 @@ public class InventoryService {
         return null;
     }
 
+    public Inventory getByCode(String code) {
+        Optional<Inventory> anItem = inventoryRepo.findByCode(code);
+        if (anItem.isPresent()) {
+            return anItem.get();
+        }
+        return null;
+    }
+
     public void updateItem(Inventory newItem) {
         inventoryRepo.save(newItem);
     }
 
     public void deleteById(Long id) {
         inventoryRepo.deleteById(id);
+    }
+
+    public void searchItem(Inventory searchItem) {
+        inventoryRepo.save(searchItem);
     }
 
     public void saveCsv(MultipartFile file) {
@@ -65,5 +78,10 @@ public class InventoryService {
 
     public List<Inventory> getAllInventories() {
         return inventoryRepo.findAll();
+    }
+
+    @Transactional(readOnly = false)
+    public void saveInvetory(Inventory inv) {
+        inventoryRepo.save(inv);
     }
 }

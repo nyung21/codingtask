@@ -13,4 +13,6 @@ public interface InventoryRepository extends CrudRepository<Inventory, Long> {
     List<Inventory> findAll();
 
     Optional<Inventory> findById(Long id);
+
+    Optional<Inventory> findByCode(String code);
 }
