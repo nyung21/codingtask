@@ -15,7 +15,7 @@
 
 ## MYSQL
 ```bash
-create table inventory2(
+create table inventory(
     id bigint NOT NULL AUTO_INCREMENT,
     name varchar(255),
     code varchar(255),
