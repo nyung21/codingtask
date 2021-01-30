@@ -16,7 +16,7 @@
 ## MYSQL
 ```bash
 create table inventory2(
-	id bigint NOT NULL AUTO_INCREMENT,
+    id bigint NOT NULL AUTO_INCREMENT,
     name varchar(255),
     code varchar(255),
     created_at datetime,
