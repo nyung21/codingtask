@@ -13,6 +13,22 @@
 * Maven - Apache Maven 3.6.3
 * Dependencies: mysql, web-starter, hibernate(JPA), devTools
 
+## MYSQL
+```bash
+create table inventory2(
+	id bigint NOT NULL AUTO_INCREMENT,
+    name varchar(255),
+    code varchar(255),
+    created_at datetime,
+    updated_at datetime,
+    weight int(11),
+    cwb int(11),
+    tko int(11),
+    tsw int(11),
+    PRIMARY KEY (id)
+);
+```
+
 ## VS code extension for Java and Spring Boot
 * Spring Boot Extension Pack
 * Language support for Java by RedHat
