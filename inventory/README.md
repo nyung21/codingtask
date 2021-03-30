@@ -1,4 +1,4 @@
-# HKTV coding task - java web inventory system
+# Coding Task - java web inventory system
 
 ## System requirement
 * Java
